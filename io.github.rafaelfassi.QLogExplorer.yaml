@@ -1,6 +1,6 @@
 app-id: io.github.rafaelfassi.QLogExplorer
 runtime: org.kde.Platform
-runtime-version: '6.4'
+runtime-version: '6.8'
 sdk: org.kde.Sdk
 rename-appdata-file: qlogexplorer.appdata.xml
 rename-desktop-file: qlogexplorer.desktop
@@ -13,7 +13,7 @@ finish-args:
   # Necessary if X11 fallback takes place.
   - --socket=fallback-x11
   - --share=ipc
-  # Necessary to open log files.
+  # Necessary to open user log files.
   - --filesystem=home
   # Necessary to open system log files.
   - --filesystem=/var/log
@@ -24,8 +24,6 @@ finish-args:
 modules:
   - name: qlogexplorer
     buildsystem: cmake-ninja
-    config-opts:
-      - -DCMAKE_POLICY_VERSION_MINIMUM=3.5
     post-install:
       - install -D -m644 packaging/linux/xdg/applications/qlogexplorer.desktop /app/share/applications/qlogexplorer.desktop
       - install -D -m644 packaging/linux/xdg/metainfo/qlogexplorer.appdata.xml /app/share/metainfo/qlogexplorer.appdata.xml
@@ -38,5 +36,5 @@ modules:
       - install -D -m644 packaging/linux/xdg/icons/hicolor/256x256/apps/qlogexplorer.png /app/share/icons/hicolor/256x256/apps/qlogexplorer.png
     sources:
       - type: archive
-        url: https://github.com/rafaelfassi/qlogexplorer/archive/refs/tags/v1.1.0.tar.gz
-        sha256: ff7e967544bdd2378f11f390148b52b4f2aab6dd405f5b2ffa08ef9af6be6503
+        url: https://github.com/rafaelfassi/qlogexplorer/archive/refs/tags/v1.1.1.tar.gz
+        sha256: 632eb97e40cd37241cd90aa1d27f1e43a450d88350c177a67dc51d4b8b66a4f9
